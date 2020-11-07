@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.cy.mapper.BackMapper">
+	 <!-- 用户登录 -->
+ 	 <select id="selectadUserLogin" parameterType="aduser" resultType="aduser">
+  		select *
+  		from adusers
+  		where adNumber = #{adNumber} and adPassword = #{adPassword}
+  </select>
+  <!-- 查询所有用户 -->
+  <select id="selectAllUssers" resultType="user">
+  	select * from users
+  </select>
+  
+ <!-- 查询所有美食 -->
+ <select id="selectAllFoodBack" parameterType="map" resultMap="selectfoodback">
+ 	select *
+  	from food f join Category c on f.fCategory = c.cID
+  	limit #{start},#{pageSize};
+ </select>
+ <!-- 所有美食数 -->
+  <select id="selectallcountFood" resultType="Integer">
+  	select count(*) 
+  	from food
+  </select>
+ <resultMap type="food" id="selectfoodback">
+  	<id column="fID" property="fID"/>
+  	<result column="fName" property="fName"/>
+  	<result column="fIntroduction" property="fIntroduction"/>
+  	<result column="fMainIngredient" property="fMainIngredient"/>
+  	<result column="fBurdening" property="fBurdening"/>
+  	<result column="fStep" property="fStep"/>
+  	<result column="fImage" property="fImage"/>
+  	<result column="fCategory" property="fCategory"/>
+  	<result column="fTime" property="fTime"/>
+  	<result column="fCreateName" property="fCreateName"/>
+  	<result column="fSign" property="fSign"/>
+  	<result column="fOnclick" property="fOnclick"/>
+  	<collection property="fCategories" resultMap="cate"/>
+  </resultMap>
+  <resultMap type="Category" id="cate">
+  	<id column="cID" property="cID"/>
+  	<result column="cName" property="cName"/>
+  </resultMap>
+ 
+ <!-- 删除用户 -->
+ <delete id="deleteManaUser" parameterType="Integer">
+ 	DELETE FROM users WHERE uID = #{uID};
+ </delete>
+ <select id="selectNameById" parameterType="Integer" resultType="String">
+ 	select uName from users where uID = #{uID};
+ </select>
+ <delete id="delectFoodByUname" parameterType="String">
+ 	DELETE FROM food WHERE fCreateName = #{fCreateName};
+ </delete>
+ 
+ <!-- 添加类别 -->
+ <insert id="insertClass" parameterType="Category">
+ 	insert into category(cName) values(#{cName});
+ </insert>
+</mapper>

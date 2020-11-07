@@ -1,0 +1,54 @@
+body{
+	background:url(../images/06.jpg) no-repeat;
+	background-size: cover;
+
+}
+.logincontain{
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		margin: auto;
+		
+		
+}
+.title{
+	color: black;
+	text-align: center;
+	margin: 50px auto;
+}
+.login{
+	width: 400px;
+	height: 400px;
+	background-color: white;
+	opacity: 0.7;
+	position: absolute;
+	left: 35%;
+	top: 20%;
+}
+.logintitle{
+	text-align: center;
+}
+.login_input{
+	width: 70%;
+	height: 60px;
+	margin-bottom: 20px;
+	border-radius: 3px;
+	border:2px solid chocolate;
+}
+.login_btn{
+	width: 80%;
+	height: 60px;
+	margin-left: 10%;
+	border-radius: 3px;
+	margin-top: 30px;
+	background-color:  chocolate;
+	border:2px solid chocolate;
+	color: white;
+	font-size: 20px;
+}
+a{
+	text-decoration: none;
+	color:black;
+}

@@ -1,0 +1,64 @@
+body{
+	background:url(../images/06.jpg) no-repeat;
+	background-size: cover;
+
+}
+.foodbigdiv{
+    			width:100%;
+    			height:auto;
+    			background-color: antiquewhite;
+    			position:absolute;
+				top: 0px;
+				left: 0px;
+    		}
+			.enrollcontain{
+					position: absolute;
+					top: 0px;
+					bottom: 0px;
+					left: 0px;
+					right: 0px;
+					margin: auto;				
+			}
+			.title{
+				color: black;
+				text-align: center;
+				margin: 50px auto;
+			}	
+			.enroll{
+				width: 400px;
+				height: 440px;
+				background-color: white;
+				opacity: 0.7;
+				position: absolute;
+				left: 35%;
+				top: 20%;
+			}
+			.enrolltitle{
+				text-align: center;
+			}
+			.enroll_input{
+				width: 70%;
+				height: 60px;
+				margin-bottom: 20px;
+				border-radius: 3px;
+				border:2px solid chocolate;
+			}
+			.enroll_btn{
+				width: 80%;
+				height: 60px;
+				margin-left: 10%;
+				border-radius: 3px;
+				margin-top: 30px;
+				background-color:  chocolate;
+				border:2px solid chocolate;
+				color: white;
+				font-size: 20px;
+			}
+			.numauto{
+				width: 80px;
+				height: 60px;
+				position: absolute;
+				top: 152px;
+				left: 266px;
+				border: 2px solid grey;
+			}

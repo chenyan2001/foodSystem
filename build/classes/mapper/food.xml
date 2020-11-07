@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.cy.mapper.FoodMapper">
+	<!-- 最新美食 -->
+  <select id="selectNewFood" resultMap="selectfood">
+  	SELECT * 
+  	FROM food 
+  	where fSign = 1
+  	ORDER BY fTime DESC 
+  	LIMIT 0,8;
+  </select>
+  <resultMap type="food" id="selectfood">
+  	<id column="fID" property="fID"/>
+  	<result column="fName" property="fName"/>
+  	<result column="fIntroduction" property="fIntroduction"/>
+  	<result column="fMainIngredient" property="fMainIngredient"/>
+  	<result column="fBurdening" property="fBurdening"/>
+  	<result column="fStep" property="fStep"/>
+  	<result column="fImage" property="fImage"/>
+  	<result column="fCategory" property="fCategory"/>
+  	<result column="fTime" property="fTime"/>
+  	<result column="fCreateName" property="fCreateName"/>
+  	<result column="fSign" property="fSign"/>
+  	<result column="fOnclick" property="fOnclick"/>
+  	<collection property="fCategories" resultMap="cate"/>
+  </resultMap>
+  <resultMap type="Category" id="cate">
+  	<id column="cID" property="cID"/>
+  	<result column="cName" property="cName"/>
+  </resultMap>
+  <!-- 所有美食 -->
+  <select id="selectAllFoods" parameterType="map" resultMap="selectfood">
+  	select *
+  	from food f join Category c on f.fCategory = c.cID
+  	where fSign = 1
+  	limit #{start},#{pageSize};
+  </select>
+  <!-- 所有美食数 -->
+  <select id="selectcountFood" resultType="Integer">
+  	select count(*) 
+  	from food
+  	where fSign = 1;
+  </select>
+  <!-- 查询类别名称 -->
+  <select id="selectCateName" resultMap="cate">
+  	select *
+  	from category;
+  </select>
+  <!-- 查询美食类别数量 -->
+  <select id="selectclasscount" parameterType="Integer" resultType="Integer">
+  	SELECT COUNT(*) 
+  	FROM food 
+  	where fCategory = #{cID};  	
+  </select>
+  <!-- 点击类别名称查询类别名字 -->
+  <select id="selectClassName" parameterType="Integer" resultType="String">
+  	select cName
+  	from category
+  	where cID = #{cID}
+  </select>
+  <!-- 查询类别美食 -->
+  <select id="selectClassFood" parameterType="Integer" resultMap="selectfood">
+  	select *
+  	from food
+  	where fCategory = #{cID};
+  </select>
+  <!-- 查询我的美食 -->
+  <select id="selectMyFood" parameterType="String" resultMap="selectfood">
+  	SELECT * 
+  	FROM food 
+  	WHERE fCreateName = #{uName};
+  </select>
+  <!-- 添加新美食 -->
+  <insert id="insertFood" parameterType="food">
+  	INSERT INTO food(fName,fIntroduction,fMainIngredient,fBurdening,fStep,fImage,fCategory,fTime,fCreateName,fSign) 
+  	VALUES (#{fName},#{fIntroduction},#{fMainIngredient},#{fBurdening},#{fStep},#{fImage},#{fCategory},now(),#{fCreateName},#{fSign});
+  </insert>
+  <!-- 查询美食名称 -->
+  <select id="selectSearchName" parameterType="String" resultMap="selectfood">
+  	SELECT * 
+  	FROM food 
+  	WHERE fName LIKE CONCAT('%',#{fName},'%');
+  </select>
+  <!-- 查询美食材料 -->
+  <select id="selectSearchMain" parameterType="String" resultMap="selectfood">
+  	SELECT * 
+  	FROM food 
+  	WHERE fMainIngredient LIKE CONCAT('%',#{fMainIngredient},'%') or fBurdening like CONCAT('%',#{fMainIngredient},'%');
+  </select>
+  <!-- 美食详情 -->
+  <select id="selectFoodDetails" parameterType="Integer" resultMap="selectfood">
+  	select * 
+  	from food 
+  	where fID=#{id};
+  </select>
+  <!-- 编辑美食 -->
+  <!-- 1.查询需要修改的美食 -->
+  <select id="selectFoodUpdate" resultMap="selectfood" parameterType="Integer">
+  	select * 
+  	from food join category on food.fCategory=category.cID 
+  	where food.fID = #{fID};
+  </select>
+  <!-- 2.修改美食 -->
+  <update id="updateFood" parameterType="food">
+  	update food
+  	set fName = #{fName},fIntroduction = #{fIntroduction},fMainIngredient = #{fMainIngredient},
+  		fBurdening = #{fBurdening},fStep = #{fStep},fImage = #{fImage},fCategory = #{fCategory},
+  		fTime = now(),fSign = #{fSign}
+  	where fID=#{fID};
+  </update>
+  <!-- 删除美食 -->
+  <delete id="deleteFood" parameterType="Integer">
+  	DELETE FROM food 
+  	WHERE fID=#{fID};
+  </delete>
+  <!-- 收藏美食 -->
+  <select id="selectCollect" parameterType="Integer" resultMap="selectfood">
+  	SELECT food.* 
+  	FROM food JOIN collect on food.fID=collect.fID
+  	WHERE uID = #{uID};
+  </select>
+  <!-- 收藏 -->
+  <insert id="insertColleFood" parameterType="collect">
+  	INSERT INTO collect(uID,fID) VALUES (#{uID},#{fID});
+  </insert>
+  <!-- 取消收藏 -->
+  <delete id="deleteColleFood" parameterType="collect">
+  	DELETE FROM collect 
+  	WHERE fID = #{fID} and uID = #{uID};
+  </delete>
+  <!-- 是否收藏 -->
+  <select id="selectIfCollect" resultType="collect" parameterType="collect">
+  	SELECT * FROM collect
+  	where fID = #{fID} and uID = #{uID};
+  </select>
+  <!-- 最热美食（点击最多） -->
+  <update id="updateFoodClickNum" parameterType="Integer">
+  	UPDATE food SET fOnclick = fOnclick+1 WHERE fID=#{fID};
+  </update>
+  <select id="selectClickNumFood" resultMap="selectfood">
+  	SELECT * 
+  	FROM food 
+  	where fSign = 1
+  	ORDER BY fOnclick DESC 
+  	LIMIT 0,8;
+  </select>
+  <!-- 发表评论 -->
+  <insert id="insertFoodComment" parameterType="comment">
+  	INSERT INTO fcomment(uID,fID,cmContent,cmTime) VALUES(#{uID},#{fID},#{cmContent},NOW());
+  </insert>
+  <!-- 查看评论 -->
+  <select id="selectFoodComment" parameterType="Integer" resultType="comment">
+  	select * from fcomment f join users u on f.uID=u.uID where  fID = #{fID};
+  </select>
+  <select id="selectCommentName" resultType="user">
+  	select * from users
+  </select>
+</mapper>

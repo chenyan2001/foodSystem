@@ -1,0 +1,54 @@
+.foodbigdiv{
+    			width:100%;
+    			height:auto;
+    			background-color: antiquewhite;
+    			position:absolute;
+				top: 0px;
+				left: 0px;
+    		}
+    	.imgplay{
+    		width: 1000px;
+    		height: 400px;
+    		margin: 0 auto;
+    		overflow: hidden;
+    		margin-top: 10px;
+    	}
+    	.img1{
+    		width: 100%;
+    		
+    	}
+    	.content{
+    		width: 1000px;
+    		height: 550px;
+    		margin: 0 auto;
+    		
+    	}
+    	.fooditem{
+    		width: 230px;
+    		height: 230px;
+    		float: left;
+    		margin: 9px;
+    		background-color:white;
+    		color:black;
+    	}
+    	.zuixin{
+    		margin-left: 20px;
+    		margin-bottom: 0px;
+    	}
+    	.imgdiv{
+    		width: 100%;
+    		height: 180px;
+    		overflow: hidden;
+    	}
+    	.foodimg{
+    		width: 100%;
+    		height: 100%;
+    		transition: all 3s ease-in;
+    	}
+    	.foodimg:hover{
+    		transform: scale(1.5);
+    	}
+    	.foodaut{
+    		text-align: center;
+    		margin-top: 10px;
+    	}

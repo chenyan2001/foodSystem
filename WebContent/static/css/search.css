@@ -1,0 +1,69 @@
+.foodbigdiv{
+    			width:100%;
+    			height:auto;
+    			background-color: antiquewhite;
+    			position:absolute;
+				top: 0px;
+				left: 0px;
+    		}
+       	.searchform{
+       		width: 100%;
+       		height: 80px;
+       	}
+       	.searchform form{
+       		float: left;
+       		line-height: 80px;
+       	}
+       	.searchtext{
+        		width: 250px;
+        		height: 50px;
+        		border: 2px solid lightgreen;
+        		border-radius: 5px;
+        		margin-left: 200px;
+        		background-color: antiquewhite;
+        	}
+        .searchbutt{
+        		width: 100px;
+        		height: 50px;
+        		background-color: lightgreen;
+        		border-radius: 5px;
+        		color: white;
+        		font-size: 20px;
+        		border: 2px solid lightgreen;
+        	}
+        .searchcont{
+        		width: 800px;
+        		height:600px;
+        		margin-top: 10px;
+        		margin: 0 auto;
+        		
+        	}
+        .fooditem{
+        		width: 750px;
+        		height: 200px;
+        		margin: 0 auto;
+        		display: flex;
+        		margin-bottom: 20px;
+        		color:black;
+        	}
+        .fooditemimg{
+        		width: 200px;
+        		height: 200px;
+        		overflow: hidden;
+        	}
+        .fooditemmass{
+        		width: 600px;
+        		height: 200px;
+        		margin-left: 20px;
+        	}
+        .fooditemimg img{
+        		width: 100%;
+        		height: 100%;
+        		transition: all 3s ease-in;
+        	}
+        .fooditemimg img:hover{
+        		transform: scale(1.5);
+        	}
+        .foottitle{
+        		font-size: 25px;
+        	}

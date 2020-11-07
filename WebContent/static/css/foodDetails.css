@@ -1,0 +1,106 @@
+.foodbigdiv{
+    			width:100%;
+    			height:auto;
+    			background-color: antiquewhite;
+    			position:absolute;
+				top: 0px;
+				left: 0px;
+    		}
+         	.foodDet{
+         		width: 800px;
+         		height: auto;
+         		margin: 0 auto;
+         		
+         	}
+         	.contenttitle{
+        		font-size: 30px;
+        	}
+        	.foodimg{
+        		width: 500px;
+        		height: 350px;
+        	}
+        	.ingredient{
+        		width: 100%;
+        		height: auto;
+        		border: 2px solid darkgray;
+        		border-radius: 20px;
+        	}
+        	.ingretiele{
+        		margin:10px;
+        		font-size: 26px;
+        		color: crimson;
+        	}
+        	.mainingre{
+        		margin-top:10px;
+        		margin-left: 30px;
+        		font-size: 24px;
+        	}
+        	.foodstep{
+        		width: 100%;
+        		height: auto;
+        		border: 2px solid darkgray;
+        		border-radius: 20px;
+        		margin-top: 20px;
+        	}
+        	.mainstep{
+        		margin-top:10px;
+        		margin-left: 10px;
+        		font-size: 20px;
+        	}
+        	.uname{
+        	color: deepskyblue;
+        	font-size: 22px;
+        	margin-left: 20px;
+        	margin-right: 20px;
+        }
+        .ctime{
+        	font-size: 12px;
+        }
+        .comment{
+        	margin-left: 40px;
+        }
+        .sendcomm{
+        	margin-left:30px;
+        	width: 250px;
+        	height: 35px;
+        	border: 1px solid darkgray;
+        	border-radius: 15px;
+        }
+        .sendbut{
+        	width: 80px;
+        	height: 35px;
+        	border: 1px;
+        	color:white;
+        	background-color:violet;
+        	border-radius: 10px;
+        }
+        .foodbutt{
+        		width: 100px;
+        		height: 50px;
+        		background-color: #90EE90;
+        		color: white;
+        		border: 0px;
+        		border-radius: 5px;
+        		font-size: 20px;
+        		margin-left: 150px;
+        		margin-top: 20px;
+        	}
+        	.collection{
+        		width: 80px;
+        		height: 50px;
+        		background-color: lightcoral;
+        		text-align: center;
+        		line-height: 50px;
+        		font-size: 20px;
+        		color: white;
+        		border-radius: 5px;
+        		border: 1px solid lightcoral;
+        		position: absolute;
+        		top: 80px;
+        		left: 660px;
+        	}
+        	#collec{
+        		background-color: lightpink;
+        		border: 1px solid lightpink;
+        		display: none;
+        	}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.cy.mapper.LoginMapper">
+  <!-- 用户登录 -->
+  <select id="selectUserLogin" parameterType="user" resultType="user">
+  	select *
+  	from users
+  	where uNumber = #{uNumber} and uPassword = #{uPassword}
+  </select>
+  <!-- 注册 -->
+  <insert id="insertUserEnroll" parameterType="user">
+  	INSERT into users(uName,uNumber,uPassword) 
+  	VALUES(#{uName},#{uNumber},#{uPassword});
+  </insert>
+  <!-- 查询用户名 -->
+  <select id="selectUsersname" resultType="user" parameterType="user">
+  	select uNumber 
+  	from users 
+  	where uNumber=#{uNumber};
+  </select>
+  <!-- 修改密码 -->
+  <update id="updateUserPsw" parameterType="user">
+  	UPDATE users 
+  	SET uPassword=#{uPassword} 
+  	WHERE uNumber=#{uNumber};
+  </update>
+</mapper>
